@@ -3,8 +3,12 @@
 Open source software and hardware for inexpensive Underwater ROV
 
 
-
 ##Structure
+
+Neptune
+	|-ENCBoot
+	|-host
+	|-device
 
 device - all code on the ROV side of the project. Includes sensor drivers, motor drivers, HTTP communication, etc.
 

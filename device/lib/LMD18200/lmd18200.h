@@ -2,6 +2,10 @@
 #define __LMD18200_H__
 
 
+/*
+Datasheet http://www.ti.com/lit/ds/symlink/lmd18200.pdf
+*/
+
 #define FORWARD 1
 #define REVERSE 0
 
