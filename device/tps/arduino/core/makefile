@@ -1,7 +1,7 @@
 #core arduino libraries
 
 TARGET = libcore.a
-OBJDIR = build-$(MCU)
+OBJDIR = bin
 
 CPP_FLAGS = -g -Os -Wall -fno-exceptions
 MCU = atmega328p
@@ -35,14 +35,15 @@ MKDIR   = mkdir -p
 %: 
 	$(MKDIR) $@
 
- $(OBJDIR)/%.o: %.c
+$(OBJDIR)/%.o: %.c
 	$(CC_NAME) -mmcu=$(MCU) -DF_CPU=16000000L -I. -MMD -c $(CPPFLAGS) $(CFLAGS) $< -o $@
 
- $(OBJDIR)/%.o: %.cpp
+$(OBJDIR)/%.o: %.cpp
 	$(CXX_NAME) -mmcu=$(MCU) -DF_CPU=16000000L -I. -MMD -c $(CPPFLAGS) $(CXXFLAGS) $< -o $@
 
 all: $(OBJDIR) $(CORE_OBJS) 
-	$(AR) rcs $(OBJDIR)/$(TARGET) $(CORE_OBJS)
+	$(AR) rcs $(TARGET) $(CORE_OBJS)
 
 clean::
 		$(REMOVE) $(OBJDIR)
+		$(REMOVE) $(TARGET)
