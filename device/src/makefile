@@ -51,11 +51,14 @@ BIN_DIR = $(PROJECT_DIR)/device/bin
 ARDUINO_PATH = $(PROJECT_DIR)/device/tps/arduino
 
 LIBS = core
-OBJs = SPI
+OBJs = SPI 
 
 SPI_PATH = $(ARDUINO_PATH)/SPI
 
 CORE_PATH = $(PROJECT_DIR)/device/tps/arduino/core
+
+####Library definitions#######
+
 
 
 
