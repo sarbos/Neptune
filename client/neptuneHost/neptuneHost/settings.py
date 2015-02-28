@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-TEMPLATE_DIRS = (r'/home/elizabeth/Documents/python/neptune/client/neptuneHost/neptuneHost/templates/neptune',
+TEMPLATE_DIRS = (r'neptuneHost/templates/neptune',
                 ) 
 
 # Quick-start development settings - unsuitable for production
