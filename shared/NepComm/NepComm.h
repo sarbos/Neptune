@@ -1,30 +1,26 @@
-#ifndef __NEPCOMM_H__
-#define __NEPCOMM_H__
+#ifndef NEPCOMM
+#define NEPCOMM
 
-#define data_size = 100;
+#include "stdint.h"
+#include "NepPacketTypes.h"
+
+#define data_size 100
 
 class NepPacket
 {
 public:
 
-	uint8_t packet_type	= 0;
-	uint8_t priority	= 0;
-	uint16_t sequence 	= 0;
-	int length = -1;//not used in serialized form, just used to keep track of how much of the data buffer is to be sent out.
-	char[data_size] data;
+	uint8_t packet_type;
+	uint8_t priority;
+	uint16_t sequence;
+	int length;//not used in serialized form, just used to keep track of how much of the data buffer is to be sent out.
+	char data[data_size];
 
 	NepPacket(uint8_t type, char* _data, int length);
 
-	int serialize(char* buffer, NepPacket* _packet);
-	int deserialize(char* buffer, NepPacket* _packet);
+	static int serialize(char* buffer, NepPacket* _packet);
+	static int deserialize(char* buffer, NepPacket* _packet);
 
 };
-
-
-
-
-
-
-
 
 #endif

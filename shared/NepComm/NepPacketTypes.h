@@ -1,5 +1,5 @@
-#ifndef NEPPACKET
-#define NEPPACKET
+#ifndef NepPacketTypes
+#define NepPacketTypes 
 
 
 //define packet types
