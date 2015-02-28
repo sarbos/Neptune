@@ -1,4 +1,5 @@
 #include "NepComm.h"
+#include "NepPacketTypes.h"
 
 NepPacket::NepPacket(uint8_t type, char* _data, int length)
 {
@@ -13,3 +14,5 @@ int NepPacket::deserialize(char* buffer, NepPacket* _packet)
 {
 	return 0;
 }
+
+
