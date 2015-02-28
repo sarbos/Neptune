@@ -4,7 +4,7 @@
 from PIL import Image, ImageTk
 from io import BytesIO
 import requests
-import tkinter
+import Tkinter as tkinter
 import threading
 from datetime import datetime,date
 import binascii
@@ -16,7 +16,7 @@ image_label.pack()
 
 def streamLoop():
 
-	r = requests.get('http://192.168.0.24:80/video.cgi', stream=True, auth=('admin', ''))
+	r = requests.get('http://192.168.0.109/video.cgi', stream=True, auth=('admin', ''))
 	headersize = 124
 	firstRead = True
 	count = 0
@@ -24,9 +24,7 @@ def streamLoop():
 		#need to account for different image sizes
 		raw = BytesIO()
 		content_length = 0
-		deets = r.raw.read(124)
-		headstr = "".join(map(chr, deets))
-		print(headstr)
+		headstr = r.raw.read(124)
 		headers = headstr.split('\r\n')
 		print(headers[1])
 		print((headers[1])[16:])
