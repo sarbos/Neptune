@@ -1,5 +1,6 @@
 #include "NepComm.h"
 using namespace std;
+
 NepPacket::NepPacket(uint8_t _type, char* _data, int _length)
 {
 	packet_type = _type;
@@ -26,3 +27,5 @@ int NepPacket::deserialize(char* buffer, NepPacket* _packet)
 	memcpy((char*)&buffer[4], &_packet->data, sizeof(_packet->data));
 	return 0;
 }
+
+
