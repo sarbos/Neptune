@@ -21,6 +21,7 @@ void generatePositionMotorData(PositionMotorData& pmd)
 
 int main()
 {
+    
     RawMotorData r;
     generateRawMotorData(r);
     PositionMotorData p;
@@ -36,6 +37,8 @@ int main()
     cout << "id: " << (unsigned int)p.id << endl;
     cout << "rotation: " << (unsigned int)p.rotation << endl;
     cout << "speed: " << (unsigned int)p.speed << endl;
+
+    NepPacket packet(1, reinterpret_cast<char*>(&r), sizeof(r));
 
     return 0;
 }
