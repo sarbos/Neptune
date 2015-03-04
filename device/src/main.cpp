@@ -4,15 +4,16 @@
 #include <device.h>
 #include <LMD18200/lmd18200.h>
 
-int
-main (void)
+int main (void)
 {
-    DDRB |= _BV(DDB0); 
-    analogWrite(3, 127);
-    
     while(1) 
     {
-        PORTB ^= _BV(PB0);
-        _delay_ms(500);
+    	/*main loop, perform the following tasks
+    	1.read from command buffer
+    	2. check for any aborts or high priority tasks and perform them
+    	3. do any direct commands
+    	4. run algorithms
+    	5. packetize system data and send back
+		*/
     }
 }
