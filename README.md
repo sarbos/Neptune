@@ -1,4 +1,5 @@
 #Neptune
+[![Build Status](https://travis-ci.org/sarbos/Neptune.svg?branch=master)](https://travis-ci.org/sarbos/Neptune)
 
 Open source software and hardware for inexpensive Underwater ROV
 
