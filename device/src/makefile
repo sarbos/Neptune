@@ -45,22 +45,26 @@ OBJ_EXT = .o
 REMOVE  = rm -rf
 MKDIR   = mkdir -p
 
-PROJECT_DIR = C:/Users/Bash/Git/neptune
+ifeq ($(TRAVIS),true)
+	PROJECT_DIR = $(TRAVIS_BUILD_DIR)
+else
+	PROJECT_DIR = C:/Users/Bash/Git/neptune
+endif
+
 BIN_DIR = $(PROJECT_DIR)/device/bin
 
 ARDUINO_PATH = $(PROJECT_DIR)/device/tps/arduino
+
+SRC_PATH = $(PROJECT_DIR)/device/src
 
 LIBS = core
 OBJs = SPI 
 
 SPI_PATH = $(ARDUINO_PATH)/SPI
 
-CORE_PATH = $(PROJECT_DIR)/device/tps/arduino/core
+CORE_PATH = $(ARDUINO_PATH)/core
 
 ####Library definitions#######
-
-
-
 
 LMD_PATH = $(LIB_PATH)/LMD18200
 
@@ -76,23 +80,24 @@ INC_DIRS = $(SPI_PATH) $(CORE_PATH) $(LIB_PATH) $(LMD_PATH)
 INC_OPTS := $(foreach dir,$(INC_DIRS), -I$(dir))
 
 
-$(BIN_DIR)/lib%.a: $(ARDUINO_PATH)/*/lib%.a;
-	cp $< $@
+all: $(BIN_DIR) $(OBJ_OPTS)
+	$(CC_NAME) $(CPP_FLAGS) -mmcu=$(MCU) -DF_CPU=$(F_CPU) $(LIB_INC_OPTS) $(INC_OPTS) -o $(BIN_DIR)/$(SRC_NAME)$(OBJ_EXT) $(SRC_PATH)/$(SRC_NAME)$(CPP_EXT) $(LIB_LINK_OPTS)
 
-$(BIN_DIR)/%.o: $(ARDUINO_PATH)/*/%.o;
-	cp $< $@
-
-$(ARDUINO_PATH)/*/%.a: 
+$(LIB_PATH)/*/%.o: $(LIB_PATH)/*/%.cpp
 	$(MAKE) -C $(@D)
 
-$(LIB_PATH)/*/%.o: (LIB_PATH)/*/%.cpp
+$(ARDUINO_PATH)/core/%.a: 
 	$(MAKE) -C $(@D)
+
+$(BIN_DIR)/%.a: $(ARDUINO_PATH)/core/%.a;
+	cp $< $@
+
+$(BIN_DIR)/%.o: $(ARDUINO_PATH)/%.o;
+	cp $< $@
+
+clean: 
+	$(REMOVE) $(BIN_DIR)
 
 %: 
 	$(MKDIR) $@
 
-all: $(BIN_DIR) $(OBJ_OPTS)
-	$(CC_NAME) $(CPP_FLAGS) -mmcu=$(MCU) -DF_CPU=$(F_CPU) $(LIB_INC_OPTS) $(INC_OPTS) -o $(BIN_DIR)/$(SRC_NAME)$(OBJ_EXT) $(SRC_NAME)$(CPP_EXT) $(LIB_LINK_OPTS)
-
-clean: 
-	$(REMOVE) $(BIN_DIR)

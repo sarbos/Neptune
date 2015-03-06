@@ -32,8 +32,6 @@ endif
 REMOVE  = rm -rf
 MKDIR   = mkdir -p
 
-%: 
-	$(MKDIR) $@
 
 $(OBJDIR)/%.o: %.c
 	$(CC_NAME) -mmcu=$(MCU) -DF_CPU=16000000L -I. -MMD -c $(CPPFLAGS) $(CFLAGS) $< -o $@
@@ -41,9 +39,14 @@ $(OBJDIR)/%.o: %.c
 $(OBJDIR)/%.o: %.cpp
 	$(CXX_NAME) -mmcu=$(MCU) -DF_CPU=16000000L -I. -MMD -c $(CPPFLAGS) $(CXXFLAGS) $< -o $@
 
-all: $(OBJDIR) $(CORE_OBJS) 
+all: libcore.a 
+
+libcore.a: $(OBJDIR) $(CORE_OBJS) 
 	$(AR) rcs $(TARGET) $(CORE_OBJS)
 
-clean::
+clean:
 		$(REMOVE) $(OBJDIR)
 		$(REMOVE) $(TARGET)
+
+%: 
+	$(MKDIR) $@

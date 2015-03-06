@@ -22,7 +22,13 @@ endif
 
 
 SRCS = SPI.cpp
-PROJECT_DIR = C:/Users/Bash/Git/neptune
+
+ifeq ($(TRAVIS),true)
+	PROJECT_DIR = $(TRAVIS_BUILD_DIR)
+else
+	PROJECT_DIR = C:/Users/Bash/Git/neptune
+endif
+
 CORE_DIR = $(PROJECT_DIR)/device/tps/arduino/core
 BIN_DIR = $(PROJECT_DIR)/device/bin/
 
