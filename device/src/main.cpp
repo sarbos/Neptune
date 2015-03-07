@@ -6,7 +6,7 @@
 int main (void)
 {
 
-	EthernetServer server = EthernetServer(7990);
+	//EthernetServer server = EthernetServer(7990);
     while(1) 
     {
     	/*main loop, perform the following tasks

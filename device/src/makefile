@@ -45,60 +45,70 @@ OBJ_EXT = .o
 REMOVE  = rm -rf
 MKDIR   = mkdir -p
 
+######PROJECT AND ARDUINO PATHS###########
+
 ifeq ($(TRAVIS),true)
 	PROJECT_DIR = $(TRAVIS_BUILD_DIR)
+	ARDUINO_PATH = /usr/local/share/arduino
 else
 	PROJECT_DIR = C:/Users/Bash/Git/neptune
+	ARDUINO_PATH = C:/Arduino
 endif
 
 BIN_DIR = $(PROJECT_DIR)/device/bin
-
-ARDUINO_PATH = $(PROJECT_DIR)/device/tps/arduino
-
 SRC_PATH = $(PROJECT_DIR)/device/src
 
-LIBS = core
-OBJs = SPI 
+#####Choose the core folder based on the board######
 
-SPI_PATH = $(ARDUINO_PATH)/SPI
+ARDUINO_CORES_PATH = $(ARDUINO_PATH)/hardware/arduino/avr/cores/arduino
+ARDUINO_VARIANT_PATH = $(ARDUINO_PATH)/hardware/arduino/avr/variants/standard
 
-CORE_PATH = $(ARDUINO_PATH)/core
-
-####Library definitions#######
-
-LMD_PATH = $(LIB_PATH)/LMD18200
-WIZ_PATH = $(PROJECT_DIR)/device/tps/wiznet
+#####################################################
 
 LIB_PATH = $(PROJECT_DIR)/device/lib
 LIB_DIRS = $(BIN_DIR)
 LIB_INC_OPTS = $(foreach dir,$(LIB_DIRS), -L$(dir))
 LIB_LINK_OPTS = $(foreach dir,$(LIBS), -l$(dir))
 
-OBJ_DIRS = $(SPI_DIR) 
-OBJ_OPTS = $(foreach dir,$(LIBS), $(BIN_DIR)/lib$(dir).a)
-
-INC_DIRS = $(SPI_PATH) $(CORE_PATH) $(LIB_PATH) $(LMD_PATH) $(WIZ_PATH)
+INC_DIRS = $(SPI_PATH) $(ARDUINO_CORES_PATH) $(LIB_PATH) $(LMD_PATH) $(WIZ_PATH) $(ARDUINO_VARIANT_PATH)
 INC_OPTS := $(foreach dir,$(INC_DIRS), -I$(dir))
 
 
-all: $(BIN_DIR) $(OBJ_OPTS)
+
+#####Core######################
+
+CORE_CPP_SRCS =  $(wildcard $(ARDUINO_CORES_PATH)/*.cpp)
+CORE_C_SRCS =  $(wildcard $(ARDUINO_CORES_PATH)/*.c)
+CORE_OBJ_FILES = $(CORE_C_SRCS:.c=.o) $(CORE_CPP_SRCS:.cpp=.o)
+CORE_OBJS = $(foreach file,$(CORE_OBJ_FILES),$(BIN_DIR)/$(notdir $(file)))
+
+
+$(BIN_DIR)/%.o: $(ARDUINO_CORES_PATH)/%.c;
+	$(CC_NAME) -c -g -Os -w -ffunction-sections -fdata-sections -mmcu=$(MCU) -DF_CPU=16000000L -DARDUINO=22 $(INC_OPTS) $< -o $@
+
+$(BIN_DIR)/%.o: $(ARDUINO_CORES_PATH)/%.cpp;
+	$(CXX_NAME) -c -g -Os -w -ffunction-sections -fdata-sections -mmcu=$(MCU) -DF_CPU=16000000L -DARDUINO=22 $(INC_OPTS) $< -o $@
+
+#####Library definitions#######
+
+LMD_PATH = $(LIB_PATH)/LMD18200
+WIZ_PATH = $(PROJECT_DIR)/device/tps/wiznet
+
+
+
+#OBJ_OPTS = $(foreach dir,$(LIBS), $(BIN_DIR)/lib$(dir).a)
+
+
+
+all: $(BIN_DIR) $(CORE_OBJS)
 	$(CC_NAME) $(CPP_FLAGS) -mmcu=$(MCU) -DF_CPU=$(F_CPU) $(LIB_INC_OPTS) $(INC_OPTS) -o $(BIN_DIR)/$(SRC_NAME)$(OBJ_EXT) $(SRC_PATH)/$(SRC_NAME)$(CPP_EXT) $(LIB_LINK_OPTS)
 
-$(LIB_PATH)/*/%.o: $(LIB_PATH)/*/%.cpp
-	$(MAKE) -C $(@D)
 
-$(ARDUINO_PATH)/core/%.a: 
-	$(MAKE) -C $(@D)
 
-$(BIN_DIR)/%.a: $(ARDUINO_PATH)/core/%.a;
-	cp $< $@
-
-$(BIN_DIR)/%.o: $(ARDUINO_PATH)/%.o;
-	cp $< $@
 
 clean: 
 	$(REMOVE) $(BIN_DIR)
 
-%: 
-	$(MKDIR) $@
+$(BIN_DIR): 
+	$(MKDIR) $(BIN_DIR)
 
