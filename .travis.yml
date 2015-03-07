@@ -7,4 +7,4 @@ install:
   - tar xvf arduino-1.6.0-linux64.tar.xz
   - sudo mv  arduino-1.6.0/ /usr/local/share/arduino
   - sudo apt-get install -qq gcc-avr binutils-avr avr-libc
-script: make -f device/src/makefile V=1
+script: make all -f device/src/makefile V=1
