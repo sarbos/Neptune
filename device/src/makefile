@@ -67,6 +67,7 @@ CORE_PATH = $(ARDUINO_PATH)/core
 ####Library definitions#######
 
 LMD_PATH = $(LIB_PATH)/LMD18200
+WIZ_PATH = $(PROJECT_DIR)/device/tps/wiznet
 
 LIB_PATH = $(PROJECT_DIR)/device/lib
 LIB_DIRS = $(BIN_DIR)
@@ -76,7 +77,7 @@ LIB_LINK_OPTS = $(foreach dir,$(LIBS), -l$(dir))
 OBJ_DIRS = $(SPI_DIR) 
 OBJ_OPTS = $(foreach dir,$(LIBS), $(BIN_DIR)/lib$(dir).a)
 
-INC_DIRS = $(SPI_PATH) $(CORE_PATH) $(LIB_PATH) $(LMD_PATH)
+INC_DIRS = $(SPI_PATH) $(CORE_PATH) $(LIB_PATH) $(LMD_PATH) $(WIZ_PATH)
 INC_OPTS := $(foreach dir,$(INC_DIRS), -I$(dir))
 
 

@@ -3,9 +3,12 @@
 #include <Arduino.h>
 #include <device.h>
 #include <LMD18200/lmd18200.h>
+#include <EthernetServer.h>
 
 int main (void)
 {
+
+	EthernetServer server = EthernetServer(7990);
     while(1) 
     {
     	/*main loop, perform the following tasks
