@@ -64,7 +64,7 @@ ARDUINO_CORES_PATH = $(ARDUINO_PATH)/hardware/arduino/avr/cores/arduino
 ARDUINO_VARIANT_PATH = $(ARDUINO_PATH)/hardware/arduino/avr/variants/standard
 
 #####################################################
-
+LIBS = core
 LIB_PATH = $(PROJECT_DIR)/device/lib
 LIB_DIRS = $(BIN_DIR)
 LIB_INC_OPTS = $(foreach dir,$(LIB_DIRS), -L$(dir))
@@ -79,9 +79,13 @@ INC_OPTS := $(foreach dir,$(INC_DIRS), -I$(dir))
 
 CORE_CPP_SRCS =  $(wildcard $(ARDUINO_CORES_PATH)/*.cpp)
 CORE_C_SRCS =  $(wildcard $(ARDUINO_CORES_PATH)/*.c)
-CORE_OBJ_FILES = $(CORE_C_SRCS:.c=.o) $(CORE_CPP_SRCS:.cpp=.o)
+CORE_OBJ_FILES = $(CORE_CPP_SRCS:.cpp=.o) $(CORE_C_SRCS:.c=.o)
 CORE_OBJS = $(foreach file,$(CORE_OBJ_FILES),$(BIN_DIR)/$(notdir $(file)))
 
+
+##Check which object files we are actually gonna use compile them to the core lib
+libcore.a: $(CORE_OBJS)
+	$(AR_NAME) rcs $(BIN_DIR)/$(notdir $@) $(CORE_OBJS)
 
 $(BIN_DIR)/%.o: $(ARDUINO_CORES_PATH)/%.c;
 	$(CC_NAME) -c -g -Os -w -ffunction-sections -fdata-sections -mmcu=$(MCU) -DF_CPU=16000000L -DARDUINO=22 $(INC_OPTS) $< -o $@
@@ -100,7 +104,7 @@ WIZ_PATH = $(PROJECT_DIR)/device/tps/wiznet
 
 
 
-all: $(BIN_DIR) $(CORE_OBJS)
+all: $(BIN_DIR) libcore.a
 	$(CC_NAME) $(CPP_FLAGS) -mmcu=$(MCU) -DF_CPU=$(F_CPU) $(LIB_INC_OPTS) $(INC_OPTS) -o $(BIN_DIR)/$(SRC_NAME)$(OBJ_EXT) $(SRC_PATH)/$(SRC_NAME)$(CPP_EXT) $(LIB_LINK_OPTS)
 
 
