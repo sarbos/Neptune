@@ -2,8 +2,6 @@
 #include <util/delay.h>
 #include <Arduino.h>
 #include <device.h>
-#include <LMD18200/lmd18200.h>
-#include <EthernetServer.h>
 
 int main (void)
 {

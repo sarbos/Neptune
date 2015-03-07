@@ -2,5 +2,9 @@ language: cpp
 before_install:
   - sudo apt-get update -qq
 install:
-  - sudo apt-get install -qq gcc-avr binutils-avr avr-libc arduino arduino-core
+  - sudo wget http://arduino.cc/download_handler.php?f=/arduino-1.6.0-linux64.tar.xz
+  - ls -alF
+  - tar xvf arduino-1.6.0-linux64.tar.xz
+  - sudo mv  arduino-1.6.0/ /usr/local/share/arduino
+  - sudo apt-get install -qq gcc-avr binutils-avr avr-libc
 script: make -f device/src/makefile V=1
