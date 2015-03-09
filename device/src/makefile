@@ -77,7 +77,9 @@ INC_OPTS := $(foreach dir,$(INC_DIRS), -I$(dir))
 
 #####Core######################
 
-CORE_CPP_SRCS =  $(wildcard $(ARDUINO_CORES_PATH)/*.cpp)
+##take all cpp's in core except for main
+CORE_CPP_SRCS =  $(filter-out $(ARDUINO_CORES_PATH)/main.cpp, $(wildcard $(ARDUINO_CORES_PATH)/*.cpp))
+
 CORE_C_SRCS =  $(wildcard $(ARDUINO_CORES_PATH)/*.c)
 CORE_OBJ_FILES = $(CORE_CPP_SRCS:.cpp=.o) $(CORE_C_SRCS:.c=.o)
 CORE_OBJS = $(foreach file,$(CORE_OBJ_FILES),$(BIN_DIR)/$(notdir $(file)))
@@ -99,19 +101,21 @@ LMD_PATH = $(LIB_PATH)/LMD18200
 WIZ_PATH = $(PROJECT_DIR)/device/tps/wiznet
 
 
-
-#OBJ_OPTS = $(foreach dir,$(LIBS), $(BIN_DIR)/lib$(dir).a)
-
-
-
-all: $(BIN_DIR) libcore.a
-	$(CC_NAME) $(CPP_FLAGS) -mmcu=$(MCU) -DF_CPU=$(F_CPU) $(LIB_INC_OPTS) $(INC_OPTS) -o $(BIN_DIR)/$(SRC_NAME)$(OBJ_EXT) $(SRC_PATH)/$(SRC_NAME)$(CPP_EXT) $(LIB_LINK_OPTS)
-
-
-
+all: $(BIN_DIR) $(BIN_DIR)/$(SRC_NAME).hex
 
 clean: 
 	$(REMOVE) $(BIN_DIR)
+
+$(BIN_DIR)/$(SRC_NAME).o: libcore.a
+	$(CC_NAME) $(CPP_FLAGS) -mmcu=$(MCU) -DF_CPU=$(F_CPU) $(LIB_INC_OPTS) $(INC_OPTS) -o $(BIN_DIR)/$(SRC_NAME)$(OBJ_EXT) $(SRC_PATH)/$(SRC_NAME)$(CPP_EXT) $(LIB_LINK_OPTS)
+
+$(BIN_DIR)/$(SRC_NAME).elf: $(BIN_DIR)/$(SRC_NAME).o
+	$(CC_NAME) -g -mmcu=$(MCU) -o $@ $< 
+
+$(BIN_DIR)/$(SRC_NAME).hex: $(BIN_DIR)/$(SRC_NAME).elf 
+	$(OBJCOPY_NAME) -Os -Wl,--gc-sections ihex -R .eeprom $< $@
+
+
 
 $(BIN_DIR): 
 	$(MKDIR) $(BIN_DIR)
