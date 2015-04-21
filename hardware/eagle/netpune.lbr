@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="mm"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
@@ -38,7 +38,7 @@
 <layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
-<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
@@ -100,6 +100,41 @@ Source: www.ti.com/.. slvs087l.pdf</description>
 <rectangle x1="2.615" y1="1.09" x2="2.915" y2="2.16" layer="51" rot="R90"/>
 <rectangle x1="2.615" y1="1.74" x2="2.915" y2="2.81" layer="51" rot="R90"/>
 </package>
+<package name="PQFN32">
+<smd name="P$1" x="0" y="0" dx="3.15" dy="3.15" layer="1"/>
+<smd name="P$2" x="-2.2" y="-1.4" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P$3" x="-2.2" y="-1" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P$4" x="-2.2" y="-0.6" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P$5" x="-2.2" y="-0.2" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P$6" x="-2.2" y="0.2" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P$7" x="-2.2" y="0.6" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P$8" x="-2.2" y="1" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P$9" x="-2.2" y="1.4" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P$10" x="-1.4" y="-2.2" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P$11" x="-1" y="-2.2" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P$12" x="-0.6" y="-2.2" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P$13" x="-0.2" y="-2.2" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P$14" x="0.2" y="-2.2" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P$15" x="0.6" y="-2.2" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P$16" x="1" y="-2.2" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P$17" x="1.5" y="-2.2" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P$18" x="2.1" y="-1.4" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P$19" x="2.1" y="-1" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P$20" x="2.1" y="-0.6" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P$21" x="2.1" y="-0.2" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P$22" x="2.1" y="0.2" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P$23" x="2.1" y="0.6" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P$24" x="2.1" y="1" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P$25" x="2.1" y="1.4" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P$26" x="-1.4" y="2.2" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P$27" x="-1" y="2.2" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P$28" x="-0.6" y="2.2" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P$29" x="-0.2" y="2.2" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P$30" x="0.2" y="2.2" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P$31" x="0.6" y="2.2" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P$32" x="1" y="2.2" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P$33" x="1.5" y="2.2" dx="0.28" dy="0.7" layer="1"/>
+</package>
 </packages>
 <symbols>
 <symbol name="DRV8801">
@@ -123,6 +158,44 @@ Source: www.ti.com/.. slvs087l.pdf</description>
 <pin name="VBB" x="22.86" y="-2.54" length="middle" rot="R180"/>
 <pin name="GND@1" x="-7.62" y="7.62" length="middle"/>
 <pin name="GND@2" x="22.86" y="7.62" length="middle" rot="R180"/>
+</symbol>
+<symbol name="TCA6424">
+<pin name="INT" x="-17.78" y="10.16" length="middle"/>
+<pin name="VCCI" x="-17.78" y="7.62" length="middle"/>
+<pin name="SDA" x="-17.78" y="5.08" length="middle"/>
+<pin name="SCL" x="-17.78" y="2.54" length="middle"/>
+<pin name="RESET" x="-17.78" y="0" length="middle"/>
+<pin name="VCCP" x="-17.78" y="-2.54" length="middle"/>
+<pin name="ADDR" x="-17.78" y="-5.08" length="middle"/>
+<pin name="GND" x="-17.78" y="-7.62" length="middle"/>
+<pin name="P00" x="-7.62" y="22.86" length="middle" rot="R270"/>
+<pin name="P01" x="-5.08" y="22.86" length="middle" rot="R270"/>
+<pin name="P02" x="-2.54" y="22.86" length="middle" rot="R270"/>
+<pin name="P03" x="0" y="22.86" length="middle" rot="R270"/>
+<pin name="P04" x="2.54" y="22.86" length="middle" rot="R270"/>
+<pin name="P05" x="5.08" y="22.86" length="middle" rot="R270"/>
+<pin name="P06" x="7.62" y="22.86" length="middle" rot="R270"/>
+<pin name="P07" x="10.16" y="22.86" length="middle" rot="R270"/>
+<pin name="P10" x="20.32" y="10.16" length="middle" rot="R180"/>
+<pin name="P11" x="20.32" y="7.62" length="middle" rot="R180"/>
+<pin name="P12" x="20.32" y="5.08" length="middle" rot="R180"/>
+<pin name="P13" x="20.32" y="2.54" length="middle" rot="R180"/>
+<pin name="P14" x="20.32" y="0" length="middle" rot="R180"/>
+<pin name="P15" x="20.32" y="-2.54" length="middle" rot="R180"/>
+<pin name="P16" x="20.32" y="-5.08" length="middle" rot="R180"/>
+<pin name="P17" x="20.32" y="-7.62" length="middle" rot="R180"/>
+<pin name="P20" x="10.16" y="-20.32" length="middle" rot="R90"/>
+<pin name="P21" x="7.62" y="-20.32" length="middle" rot="R90"/>
+<pin name="P22" x="5.08" y="-20.32" length="middle" rot="R90"/>
+<pin name="P23" x="2.54" y="-20.32" length="middle" rot="R90"/>
+<pin name="P24" x="0" y="-20.32" length="middle" rot="R90"/>
+<pin name="P25" x="-2.54" y="-20.32" length="middle" rot="R90"/>
+<pin name="P26" x="-5.08" y="-20.32" length="middle" rot="R90"/>
+<pin name="P27" x="-7.62" y="-20.32" length="middle" rot="R90"/>
+<wire x1="-12.7" y1="17.78" x2="-12.7" y2="-15.24" width="0.254" layer="94"/>
+<wire x1="-12.7" y1="-15.24" x2="15.24" y2="-15.24" width="0.254" layer="94"/>
+<wire x1="15.24" y1="-15.24" x2="15.24" y2="17.78" width="0.254" layer="94"/>
+<wire x1="15.24" y1="17.78" x2="-12.7" y2="17.78" width="0.254" layer="94"/>
 </symbol>
 </symbols>
 <devicesets>
