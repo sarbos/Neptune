@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="mm"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
@@ -102,38 +102,38 @@ Source: www.ti.com/.. slvs087l.pdf</description>
 </package>
 <package name="PQFN32">
 <smd name="P$1" x="0" y="0" dx="3.15" dy="3.15" layer="1"/>
-<smd name="P$2" x="-2.2" y="-1.4" dx="0.28" dy="0.7" layer="1" rot="R90"/>
-<smd name="P$3" x="-2.2" y="-1" dx="0.28" dy="0.7" layer="1" rot="R90"/>
-<smd name="P$4" x="-2.2" y="-0.6" dx="0.28" dy="0.7" layer="1" rot="R90"/>
-<smd name="P$5" x="-2.2" y="-0.2" dx="0.28" dy="0.7" layer="1" rot="R90"/>
-<smd name="P$6" x="-2.2" y="0.2" dx="0.28" dy="0.7" layer="1" rot="R90"/>
-<smd name="P$7" x="-2.2" y="0.6" dx="0.28" dy="0.7" layer="1" rot="R90"/>
-<smd name="P$8" x="-2.2" y="1" dx="0.28" dy="0.7" layer="1" rot="R90"/>
-<smd name="P$9" x="-2.2" y="1.4" dx="0.28" dy="0.7" layer="1" rot="R90"/>
-<smd name="P$10" x="-1.4" y="-2.2" dx="0.28" dy="0.7" layer="1"/>
-<smd name="P$11" x="-1" y="-2.2" dx="0.28" dy="0.7" layer="1"/>
-<smd name="P$12" x="-0.6" y="-2.2" dx="0.28" dy="0.7" layer="1"/>
-<smd name="P$13" x="-0.2" y="-2.2" dx="0.28" dy="0.7" layer="1"/>
-<smd name="P$14" x="0.2" y="-2.2" dx="0.28" dy="0.7" layer="1"/>
-<smd name="P$15" x="0.6" y="-2.2" dx="0.28" dy="0.7" layer="1"/>
-<smd name="P$16" x="1" y="-2.2" dx="0.28" dy="0.7" layer="1"/>
-<smd name="P$17" x="1.5" y="-2.2" dx="0.28" dy="0.7" layer="1"/>
-<smd name="P$18" x="2.1" y="-1.4" dx="0.28" dy="0.7" layer="1" rot="R90"/>
-<smd name="P$19" x="2.1" y="-1" dx="0.28" dy="0.7" layer="1" rot="R90"/>
-<smd name="P$20" x="2.1" y="-0.6" dx="0.28" dy="0.7" layer="1" rot="R90"/>
-<smd name="P$21" x="2.1" y="-0.2" dx="0.28" dy="0.7" layer="1" rot="R90"/>
-<smd name="P$22" x="2.1" y="0.2" dx="0.28" dy="0.7" layer="1" rot="R90"/>
-<smd name="P$23" x="2.1" y="0.6" dx="0.28" dy="0.7" layer="1" rot="R90"/>
-<smd name="P$24" x="2.1" y="1" dx="0.28" dy="0.7" layer="1" rot="R90"/>
-<smd name="P$25" x="2.1" y="1.4" dx="0.28" dy="0.7" layer="1" rot="R90"/>
-<smd name="P$26" x="-1.4" y="2.2" dx="0.28" dy="0.7" layer="1"/>
-<smd name="P$27" x="-1" y="2.2" dx="0.28" dy="0.7" layer="1"/>
-<smd name="P$28" x="-0.6" y="2.2" dx="0.28" dy="0.7" layer="1"/>
-<smd name="P$29" x="-0.2" y="2.2" dx="0.28" dy="0.7" layer="1"/>
-<smd name="P$30" x="0.2" y="2.2" dx="0.28" dy="0.7" layer="1"/>
-<smd name="P$31" x="0.6" y="2.2" dx="0.28" dy="0.7" layer="1"/>
-<smd name="P$32" x="1" y="2.2" dx="0.28" dy="0.7" layer="1"/>
-<smd name="P$33" x="1.5" y="2.2" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P25" x="-2.405" y="-1.751" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P26" x="-2.405" y="-1.249" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P27" x="-2.405" y="-0.751" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P28" x="-2.405" y="-0.249" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P29" x="-2.405" y="0.249" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P30" x="-2.405" y="0.751" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P31" x="-2.405" y="1.249" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P32" x="-2.405" y="1.751" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P16" x="2.405" y="-1.751" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P15" x="2.405" y="-1.249" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P14" x="2.405" y="-0.751" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P13" x="2.405" y="-0.249" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P12" x="2.405" y="0.249" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P11" x="2.405" y="0.751" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P10" x="2.405" y="1.249" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P9" x="2.405" y="1.751" dx="0.28" dy="0.7" layer="1" rot="R90"/>
+<smd name="P1" x="-1.75" y="2.404" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P2" x="-1.251" y="2.404" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P3" x="-0.749" y="2.404" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P4" x="-0.25" y="2.404" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P5" x="0.25" y="2.404" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P6" x="0.751" y="2.404" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P7" x="1.249" y="2.404" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P8" x="1.75" y="2.404" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P24" x="-1.748" y="-2.405" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P23" x="-1.251" y="-2.405" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P22" x="-0.75" y="-2.405" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P21" x="-0.249" y="-2.405" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P20" x="0.249" y="-2.405" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P19" x="0.75" y="-2.405" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P18" x="1.251" y="-2.405" dx="0.28" dy="0.7" layer="1"/>
+<smd name="P17" x="1.748" y="-2.405" dx="0.28" dy="0.7" layer="1"/>
 </package>
 </packages>
 <symbols>
@@ -199,6 +199,52 @@ Source: www.ti.com/.. slvs087l.pdf</description>
 </symbol>
 </symbols>
 <devicesets>
+<deviceset name="TCA6424A">
+<gates>
+<gate name="G$1" symbol="TCA6424" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="PQFN32">
+<connects>
+<connect gate="G$1" pin="ADDR" pad="P26"/>
+<connect gate="G$1" pin="GND" pad="P$1 P25"/>
+<connect gate="G$1" pin="INT" pad="P32"/>
+<connect gate="G$1" pin="P00" pad="P1"/>
+<connect gate="G$1" pin="P01" pad="P2"/>
+<connect gate="G$1" pin="P02" pad="P3"/>
+<connect gate="G$1" pin="P03" pad="P4"/>
+<connect gate="G$1" pin="P04" pad="P5"/>
+<connect gate="G$1" pin="P05" pad="P6"/>
+<connect gate="G$1" pin="P06" pad="P7"/>
+<connect gate="G$1" pin="P07" pad="P8"/>
+<connect gate="G$1" pin="P10" pad="P9"/>
+<connect gate="G$1" pin="P11" pad="P10"/>
+<connect gate="G$1" pin="P12" pad="P11"/>
+<connect gate="G$1" pin="P13" pad="P12"/>
+<connect gate="G$1" pin="P14" pad="P13"/>
+<connect gate="G$1" pin="P15" pad="P14"/>
+<connect gate="G$1" pin="P16" pad="P15"/>
+<connect gate="G$1" pin="P17" pad="P16"/>
+<connect gate="G$1" pin="P20" pad="P17"/>
+<connect gate="G$1" pin="P21" pad="P18"/>
+<connect gate="G$1" pin="P22" pad="P19"/>
+<connect gate="G$1" pin="P23" pad="P20"/>
+<connect gate="G$1" pin="P24" pad="P21"/>
+<connect gate="G$1" pin="P25" pad="P22"/>
+<connect gate="G$1" pin="P26" pad="P23"/>
+<connect gate="G$1" pin="P27" pad="P24"/>
+<connect gate="G$1" pin="RESET" pad="P28"/>
+<connect gate="G$1" pin="SCL" pad="P29"/>
+<connect gate="G$1" pin="SDA" pad="P30"/>
+<connect gate="G$1" pin="VCCI" pad="P31"/>
+<connect gate="G$1" pin="VCCP" pad="P27"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 </drawing>
