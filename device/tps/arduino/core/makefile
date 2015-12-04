@@ -15,6 +15,7 @@ SRC_FILES += WString
 SRC_FILES += wiring_analog
 SRC_FILES += wiring_digital
 SRC_FILES += wiring
+SRC_FILES += hooks
 
 CORE_OBJS = $(foreach file,$(SRC_FILES), $(OBJDIR)/$(file).o)
 
