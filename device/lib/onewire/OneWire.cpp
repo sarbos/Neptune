@@ -60,11 +60,8 @@ sample code bearing this copyright.
 
 extern "C" {
 
-#if (ARDUINO >= 100)
 #include <Arduino.h>
-#else
-#include <WProgram.h>
-#endif
+
 
 #include <avr/io.h>
 #include "pins_arduino.h"

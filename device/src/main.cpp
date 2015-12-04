@@ -3,11 +3,15 @@
 #include <Arduino.h>
 #include <device.h>
 #include <OneWire.h>
+#include "motor.h"
 
 int DS18S20_Pin = 2; //DS18S20 Signal pin on digital 2
 
 //Temperature chip i/o
 OneWire ds(DS18S20_Pin);  // on digital pin 2
+
+
+
 
 float getTemp(){
   //returns the temperature from one DS18S20 in DEG Celsius
@@ -35,7 +39,7 @@ float getTemp(){
   ds.select(addr);
   ds.write(0x44,1); // start conversion, with parasite power on at the end
 
-  byte present = ds.reset();
+  ds.reset();
   ds.select(addr);    
   ds.write(0xBE); // Read Scratchpad
 
@@ -59,9 +63,15 @@ float getTemp(){
 
 int main (void)
 {
+	//setup pins for motors, only one motor chip(2 motors) for now.
+	motor_setup();
     while(1) 
     {
     	float temp = getTemp();
+    	if (temp>20.0)
+    	{
+    		//do nothing
+    	}
     	/*main loop, perform the following tasks
     	1.read from command buffer
     	2. check for any aborts or high priority tasks and perform them

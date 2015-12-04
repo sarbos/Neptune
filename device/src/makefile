@@ -64,6 +64,8 @@ SPI_PATH = $(ARDUINO_PATH)/SPI
 
 CORE_PATH = $(ARDUINO_PATH)/core
 
+ONEWIRE_PATH = $(PROJECT_DIR)/device/tps/onewire
+
 ####Library definitions#######
 
 LMD_PATH = $(LIB_PATH)/LMD18200
@@ -76,12 +78,12 @@ LIB_LINK_OPTS = $(foreach dir,$(LIBS), -l$(dir))
 OBJ_DIRS = $(SPI_DIR) 
 OBJ_OPTS = $(foreach dir,$(LIBS), $(BIN_DIR)/lib$(dir).a)
 
-INC_DIRS = $(SPI_PATH) $(CORE_PATH) $(LIB_PATH) $(LMD_PATH)
+INC_DIRS = $(SPI_PATH) $(CORE_PATH) $(LIB_PATH) $(LIB_PATH)/onewire $(LMD_PATH)
 INC_OPTS := $(foreach dir,$(INC_DIRS), -I$(dir))
 
 
 all: $(BIN_DIR) $(OBJ_OPTS)
-	$(CC_NAME) $(CPP_FLAGS) -mmcu=$(MCU) -DF_CPU=$(F_CPU) $(LIB_INC_OPTS) $(INC_OPTS) -o $(BIN_DIR)/$(SRC_NAME)$(OBJ_EXT) $(SRC_PATH)/$(SRC_NAME)$(CPP_EXT) $(LIB_LINK_OPTS)
+	$(CC_NAME) $(CPP_FLAGS) -mmcu=$(MCU) -DF_CPU=$(F_CPU) $(LIB_INC_OPTS) $(INC_OPTS) -o $(BIN_DIR)/$(SRC_NAME)$(OBJ_EXT) $(SRC_PATH)/$(SRC_NAME)$(CPP_EXT) $(LIB_PATH)/onewire/OneWire.cpp $(LIB_LINK_OPTS)
 
 $(LIB_PATH)/*/%.o: $(LIB_PATH)/*/%.cpp
 	$(MAKE) -C $(@D)
