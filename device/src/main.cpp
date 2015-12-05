@@ -3,7 +3,7 @@
 #include <Arduino.h>
 #include <device.h>
 #include <OneWire.h>
-#include "motor.h"
+//#include "motor.h"
 
 int DS18S20_Pin = 2; //DS18S20 Signal pin on digital 2
 
@@ -64,7 +64,7 @@ float getTemp(){
 int main (void)
 {
 	//setup pins for motors, only one motor chip(2 motors) for now.
-	motor_setup();
+	//motor_setup();
     while(1) 
     {
     	float temp = getTemp();
