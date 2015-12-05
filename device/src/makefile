@@ -78,12 +78,13 @@ LIB_LINK_OPTS = $(foreach dir,$(LIBS), -l$(dir))
 OBJ_DIRS = $(SPI_DIR) 
 OBJ_OPTS = $(foreach dir,$(LIBS), $(BIN_DIR)/lib$(dir).a)
 
-INC_DIRS = $(SPI_PATH) $(CORE_PATH) $(LIB_PATH) $(LIB_PATH)/onewire $(LMD_PATH)
+INC_DIRS = $(SPI_PATH) $(CORE_PATH) $(LIB_PATH)
 INC_OPTS := $(foreach dir,$(INC_DIRS), -I$(dir))
 
 
 all: $(BIN_DIR) $(OBJ_OPTS)
-	$(CC_NAME) $(CPP_FLAGS) -mmcu=$(MCU) -DF_CPU=$(F_CPU) $(LIB_INC_OPTS) $(INC_OPTS) -o $(BIN_DIR)/$(SRC_NAME)$(OBJ_EXT) $(SRC_PATH)/$(SRC_NAME)$(CPP_EXT) $(LIB_PATH)/onewire/OneWire.cpp $(LIB_LINK_OPTS)
+	$(CC_NAME) $(CPP_FLAGS) -mmcu=$(MCU) -DF_CPU=$(F_CPU) $(LIB_INC_OPTS) $(INC_OPTS) -o $(BIN_DIR)/$(SRC_NAME)$.elf $(SRC_PATH)/$(SRC_NAME)$(CPP_EXT) $(LIB_LINK_OPTS)
+	$(OBJCOPY_NAME) -O ihex -R .eeprom $(BIN_DIR)/$(SRC_NAME)$.elf $(BIN_DIR)/$(SRC_NAME).hex 
 
 $(LIB_PATH)/*/%.o: $(LIB_PATH)/*/%.cpp
 	$(MAKE) -C $(@D)
