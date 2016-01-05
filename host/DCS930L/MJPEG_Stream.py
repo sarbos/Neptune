@@ -10,27 +10,26 @@ from datetime import datetime,date
 import binascii
 
 root = tkinter.Tk()
-root.geometry("680x800")
+root.geometry("1280x1080")
 image_label = tkinter.Label(root)  
 image_label.pack()
 
 def streamLoop():
 
-	r = requests.get('http://192.168.0.24:80/video.cgi', stream=True, auth=('admin', ''))
-	headersize = 124
+	r = requests.get('http://trackfield.webcam.oregonstate.edu/axis-cgi/mjpg/video.cgi', stream=True,)
+	headersize = 66
 	firstRead = True
 	count = 0
 	while True:
 		#need to account for different image sizes
-		raw = BytesIO()
 		content_length = 0
-		deets = r.raw.read(124)
+		deets = r.raw.read(headersize)
 		headstr = "".join(map(chr, deets))
 		print(headstr)
 		headers = headstr.split('\r\n')
-		print(headers[1])
-		print((headers[1])[16:])
-		content_length = int((headers[1])[16:])
+		#print(headers[1])
+		print((headers[2])[16:])
+		content_length = int((headers[2])[16:])
 
 		#print(content_length)
 		jpg = r.raw.read(content_length)
