@@ -5,6 +5,7 @@ import threading
 from datetime import datetime,date
 import binascii
 import time
+import pygame
 
 import tkinter
 root = tkinter.Tk()
@@ -21,7 +22,6 @@ def upArrow():
 	print("up")
 def downArrow():
 	print("down")
-
 
 
 def light(lights_on):
@@ -63,12 +63,13 @@ canvas.pack()
 canvas.place(x=0, y=730)
 
 def streamLoop():
-	r = requests.get('http://trackfield.webcam.oregonstate.edu/axis-cgi/mjpg/video.cgi', stream=True)
+	#r = requests.get('http://trackfield.webcam.oregonstate.edu/axis-cgi/mjpg/video.cgi', stream=True)
+	r = requests.get('http://192.168.0.11/mjpeg.cgi?user=admin&password=', stream=True, auth=('admin', ''))
 	count = 0
 	frame_num = 2
 	image_up = datetime.now()
-	while True:
 
+	while True:
 		if (count == frame_num-1):
 			time = datetime.now() - image_up
 			fps = frame_num /time.microseconds * 1000000
@@ -77,16 +78,26 @@ def streamLoop():
 			count = 0
 
 		content_length = 0
-		boundary = r.raw.readline()
-		content_type = r.raw.readline()
 		cl = r.raw.readline()
+		#print(cl)
 		content_length = int((cl[16:-2]))
+		date_time = r.raw.readline()
+		#print(date_time)
+		content_type = r.raw.readline()
+		#print(content_type)
 		r.raw.readline()
-		#print(content_length)
+		#boundary = r.raw.readline()
+		#print(boundary)
+
 		jpg = r.raw.read(content_length)
 
 		#read the last \r\n
-		r.raw.read(2)
+		#print(r.raw.readline())
+		#print(r.raw.readline())
+		r.raw.readline()
+		r.raw.readline()
+		r.raw.readline()
+		#print("END LINE\r\n")
 		#if cam_var.get():
 		rawbytes = BytesIO(jpg)
 		rawbytes.seek(0)
@@ -102,8 +113,9 @@ def updateImage(i):
 
 
 
-thread = threading.Thread(target=streamLoop)
-thread.start()
+t1 = threading.Thread(target=streamLoop)
+t1.start()
+
 
 
 
@@ -111,6 +123,7 @@ lights_on = [True]
 lights = tkinter.Button(root, text = "Lights", command = lambda: light(lights_on))
 lights.pack()
 lights.place(x=25,y=780)
+
 '''
 br = tkinter.Button(root, text = "->", command = rightArrow)
 br.pack()
